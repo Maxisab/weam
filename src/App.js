@@ -8,6 +8,7 @@ import Login from './pages/Login/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { lightBlue, orange } from '@mui/material/colors'
+import Navbar from './components/Navbar';
 
 const theme = createTheme({
   palette: {
@@ -20,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <Navbar />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
