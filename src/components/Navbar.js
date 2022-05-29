@@ -2,9 +2,15 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link'
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+
+const navlink = {
+  color: "black",
+  mx: "10px"
+}
 
 
 const Navbar = () => {
@@ -23,8 +29,9 @@ const Navbar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
             WEAM
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Sign Up</Button>
+          <Link href="/" sx={navlink}>HOME</Link>
+          <Link href="/login" sx={navlink}>LOGIN</Link>
+          <Link href="/signup" sx={navlink}>SIGNUP</Link>
         </Toolbar>
       </AppBar>
     </Box>

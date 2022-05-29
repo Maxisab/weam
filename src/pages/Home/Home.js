@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 // import { useCollection } from '../../hooks/useCollection';
 
 const center = {
-  'display': 'flex',
-  'flex-direction': 'column',
-  'align-items': 'center',
-  'justify-content': 'center',
-  'height': '60vh'
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '60vh'
 }
 
 const btn = [{
@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <div className="home" style={center}>
-      <Button component={Link} to="/" sx={btn} variant="contained" size="large">Find Subs</Button>
+      <Button component={Link} to="/sub-request" sx={btn} variant="contained" size="large">Find Subs</Button>
       <Button component={Link} to="/login" sx={btn} variant="contained" size="large">Log In</Button>
       <Button component={Link} to="/signup" sx={btn} variant="contained" size="large">Sign Up</Button>
       {/* {users && users.map((user) => (
