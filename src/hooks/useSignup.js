@@ -13,10 +13,13 @@ export const useSignup = () => {
     setError(null)
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
+        dispatch({ type: 'ERROR', payload: null })
         dispatch({ type: 'LOGIN', payload: res.user })
       })
       .catch((err) => {
         setError(err.message)
+        console.log(err.code)
+        dispatch({ type: 'ERROR', payload: err.code })
       })
 
   }

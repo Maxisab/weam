@@ -29,7 +29,7 @@ function App() {
       {authIsReady && (
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Navbar />
+          <Navbar user={user} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sub-request" element={<SubRequest />} />

@@ -101,7 +101,7 @@ const Signup = () => {
         >
         Sign Up  
         </Button>
-        {error && <AuthErrorMessage error={error.code} authType="signup" />}
+        {error && <AuthErrorMessage authType="signup" />}
       </form>
 
     </Container>

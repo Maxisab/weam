@@ -1,6 +1,8 @@
 import Card from '@mui/material/Card'
+import { useAuthContext } from '../hooks/useAuthContext'
 
-const AuthErrorMessage = ({error, authType}) => {
+const AuthErrorMessage = ({ authType }) => {
+  const { authError } = useAuthContext()
 
   const errStyle = {
     p: 1,
@@ -12,7 +14,12 @@ const AuthErrorMessage = ({error, authType}) => {
     if (authType === 'login') {
       return 'There was a problem logging in... Please check your email and password and try again.'
     } else if (authType === 'signup') {
-      return 'There was a problem signing you up.'
+      switch (authError) {
+        case 'auth/email-already-in-use':
+          return 'That email is already in use'
+        default:
+          return authError
+      }
     }
   }
 

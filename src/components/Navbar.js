@@ -1,6 +1,7 @@
 // HOOKS
 import { useLogout } from '../hooks/useLogout';
-
+// REACT COMPONENTS
+import { NavLink } from 'react-router-dom';
 // MUI
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,32 +15,31 @@ import MenuIcon from '@mui/icons-material/Menu';
 const navlink = {
   color: "black",
   cursor: "pointer",
-  mx: "10px"
+  margin: "0 10px 0 10px",
+  textDecoration: 'none'
+}
+
+const logoStyle = {
+  color: "black",
+  cursor: "pointer",
+  marginRight: 'auto',
+  textDecoration: 'none'
 }
 
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const { logout } = useLogout()
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
-            WEAM
+          <Typography variant="h6" sx={logoStyle} >
+            <NavLink to={'/'} style={logoStyle} >WEAM</NavLink>
           </Typography>
-          <Link href="/" sx={navlink}>HOME</Link>
-          <Link href="/login" sx={navlink}>LOGIN</Link>
-          <Link href="/signup" sx={navlink}>SIGNUP</Link>
-          <Typography component="p" sx={navlink} onClick={logout} >LOGOUT</Typography>
+          {!user && <NavLink to={'/login'} style={navlink} underline="none" >LOGIN</NavLink>}
+          {!user && <NavLink to={'/signup'} style={navlink} underline="none" >SIGNUP</NavLink>}
+          {user && <Typography component="p" sx={navlink} onClick={logout} >LOGOUT</Typography>}
         </Toolbar>
       </AppBar>
     </Box>

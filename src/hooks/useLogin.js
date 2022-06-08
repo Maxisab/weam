@@ -13,6 +13,7 @@ export const useLogin = () => {
     setError(null)
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
+        dispatch({ type: 'ERROR', payload: null })
         dispatch({ type: 'LOGIN', payload: res.user })
       })
       .catch((err) => {

@@ -85,7 +85,7 @@ const Login = () => {
         >
         Log In  
         </Button>
-        {error && <AuthErrorMessage error={error.code} authType='login' />}
+        {error && <AuthErrorMessage authType='login' />}
       </form>
 
     </Container>
