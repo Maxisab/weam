@@ -1,35 +1,49 @@
-// REACT HOOKS
-import { useState } from 'react'
-
 // MUI
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-
 // AUTH
 import { useSignup } from '../../hooks/useSignup'
+// FORMS
+import { useFormik } from 'formik'
+import * as yup from 'yup'
+import AuthErrorMessage from '../../components/AuthErrorMessage'
+
+const validationSchema = yup.object({
+  email: yup
+    .string("Enter your email")
+    .email("Enter a valid email")
+    .required("Email is required"),
+  password: yup
+    .string("Enter your password")
+    .min(8, "Password should be a minimum of 8 characters length")
+    .required("You must enter a password"),
+  passwordConfirmation: yup
+    .string("Confirm your password")
+    .required("You must confirm your password")
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+})
 
 const Signup = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [emailError, setEmailError] = useState(false)
-  const [passwordError, setPasswordError] = useState(false)
   const { error, signup } = useSignup()
 
   const margin = [{
     my: '10px'
   }]
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setEmailError(false)
-    setPasswordError(false)
-
-    signup(email, password)
-
-    e.target.reset()
-  }
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      passwordConfirmation: ""
+    },
+    onSubmit: (values) => {
+      const { email, password } = values
+      signup(email, password)
+    },
+    validationSchema
+  })
 
   return (
     <Container sx={[{my: 8}]} className="signup" maxWidth="xs">
@@ -41,30 +55,42 @@ const Signup = () => {
       >
         Sign Up
       </Typography>
-      <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+      <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
         <TextField
-          sx={margin}
-          onChange={(e) => setEmail(e.target.value)}
-          variant='outlined'
           label='Email'
-          name='email'
           id='email'
           type='email'
+          variant='outlined'
           required
           fullWidth
-          error={emailError}
+          sx={margin}
+          {...formik.getFieldProps('email')}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
         <TextField
-          sx={margin}
-          onChange={(e) => setPassword(e.target.value)}
-          variant='outlined'
           label='Password'
-          name='password'
           id='password'
           type='password'
+          variant='outlined'
           required
           fullWidth
-          error={passwordError}
+          sx={margin}
+          {...formik.getFieldProps('password')}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
+        <TextField
+          label='Confirm Password'
+          id='passwordConfirmation'
+          type='password'
+          variant='outlined'
+          required
+          fullWidth
+          sx={margin}
+          {...formik.getFieldProps('passwordConfirmation')}
+          error={formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation)}
+          helperText={formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
         />
         <Button 
           sx={margin}
@@ -75,7 +101,7 @@ const Signup = () => {
         >
         Sign Up  
         </Button>
-        {error && <p>{error}</p>}
+        {error && <AuthErrorMessage error={error.code} authType="signup" />}
       </form>
 
     </Container>

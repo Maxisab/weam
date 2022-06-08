@@ -17,7 +17,7 @@ const validationSchema = yup.object({
     .required("Email is required"),
   password: yup
     .string("Enter your password")
-    .min(6, "Password should be a minimum of 6 characters length")
+    .min(8, "Password should be a minimum of 8 characters length")
     .required("You must enter a password")
 })
 
@@ -83,9 +83,9 @@ const Login = () => {
           type='submit'
           fullWidth
         >
-        Sign Up  
+        Log In  
         </Button>
-        {error && <AuthErrorMessage error={error.code}/>}
+        {error && <AuthErrorMessage error={error.code} authType='login' />}
       </form>
 
     </Container>
