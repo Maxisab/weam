@@ -3,23 +3,24 @@ import { useAuthContext } from './useAuthContext'
 
 // FIREBASE IMPORTS
 import { auth } from '../firebase/config'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [error, setError] = useState(null)
   const { dispatch } = useAuthContext()
 
-  const signup = (email, password) => {
+  const login = (email, password) => {
     setError(null)
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         dispatch({ type: 'LOGIN', payload: res.user })
       })
       .catch((err) => {
-        setError(err.message)
+        console.log(err.code)
+        setError(err)
       })
 
   }
 
-  return { error, signup }
+  return { error, login }
 }

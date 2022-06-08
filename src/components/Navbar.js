@@ -1,3 +1,7 @@
+// HOOKS
+import { useLogout } from '../hooks/useLogout';
+
+// MUI
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,11 +13,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const navlink = {
   color: "black",
+  cursor: "pointer",
   mx: "10px"
 }
 
 
 const Navbar = () => {
+  const { logout } = useLogout()
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -32,6 +39,7 @@ const Navbar = () => {
           <Link href="/" sx={navlink}>HOME</Link>
           <Link href="/login" sx={navlink}>LOGIN</Link>
           <Link href="/signup" sx={navlink}>SIGNUP</Link>
+          <Typography component="p" sx={navlink} onClick={logout} >LOGOUT</Typography>
         </Toolbar>
       </AppBar>
     </Box>
