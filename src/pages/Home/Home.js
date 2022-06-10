@@ -23,7 +23,7 @@ const btn = [{
 
 const Home = () => {
   // const { documents: users } = useCollection('users')
-  const { user } = useAuthContext()
+  const { user, userData } = useAuthContext()
   const { logout } = useLogout()
 
   return (
@@ -32,9 +32,7 @@ const Home = () => {
       {!user && <Button component={Link} to="/login" sx={btn} variant="contained" size="large">Log In</Button>}
       {!user && <Button component={Link} to="/signup" sx={btn} variant="contained" size="large">Sign Up</Button>}
       {user && <Button onClick={logout} sx={btn} variant="contained" size="large">Log Out</Button>}
-      {/* {users && users.map((user) => (
-        <div className="user-div">{user.username}</div>
-      ))} */}
+      <button onClick={() => { console.log(userData) }}>Check state</button>
     </div>
   )
 }

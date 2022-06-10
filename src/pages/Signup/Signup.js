@@ -1,10 +1,13 @@
+// REACT
+import { NavLink } from 'react-router-dom'
 // MUI
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-// AUTH
+// HOOKS
 import { useSignup } from '../../hooks/useSignup'
+import { useProfile } from '../../hooks/useProfile'
 // FORMS
 import { useFormik } from 'formik'
 import * as yup from 'yup'
@@ -28,9 +31,18 @@ const validationSchema = yup.object({
 const Signup = () => {
   const { error, signup } = useSignup()
 
-  const margin = [{
+  const margin = {
     my: '10px'
-  }]
+  }
+
+  const loginText = {
+    textAlign: 'left'
+  }
+
+  const linkStyle = {
+    marginLeft: '5px',
+    textDecoration: 'none'
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -103,6 +115,15 @@ const Signup = () => {
         </Button>
         {error && <AuthErrorMessage authType="signup" />}
       </form>
+      <Typography 
+        variant="subtitle2"
+        component="div"
+        gutterBottom
+        sx={loginText}
+      >
+        Already registered? 
+        <NavLink to={'/login'} style={linkStyle} >Log In</NavLink>
+      </Typography>
 
     </Container>
   )
