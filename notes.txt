@@ -1,0 +1,25 @@
+IMPORTANT INFO AND WORKFLOW NOTES
+
+Complete:
+
+  Basic GUI for signup, login, logout
+  Firebase Auth
+  Create user profile doc in firestore upon signup (test)
+  Get user profile doc from firestore after signup or login
+  Add user profile data to context
+
+Up next:
+
+  Feature: add first and last name to user profile
+  -add TextFields (w/ validation) to form
+  -then setDoc(userDoc, data) <---- NOT THE ACTUAL SYNTAX
+  Feature: add validation & control to sub form
+  -formik, yup
+  Feature: set up twilio, wire to sub form (who? input)
+
+At some point:
+
+  Set up twilio trial
+  Set up google voice number, port to twilio
+  Set up twilio with node
+  -follow link on sms quickstart page to set up environment variables

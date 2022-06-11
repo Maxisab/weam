@@ -45,8 +45,7 @@ const Login = () => {
       password: ""
     },
     onSubmit: (values) => {
-      const { email, password } = values
-      login(email, password)
+      login(values)
     },
     validationSchema
   })

@@ -7,13 +7,18 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 // HOOKS
 import { useSignup } from '../../hooks/useSignup'
-import { useProfile } from '../../hooks/useProfile'
 // FORMS
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import AuthErrorMessage from '../../components/AuthErrorMessage'
 
 const validationSchema = yup.object({
+  firstName: yup
+    .string("Enter your first name")
+    .required("First name is required"),
+  lastName: yup
+    .string("Enter your last name")
+    .required("Last name is required"),
   email: yup
     .string("Enter your email")
     .email("Enter a valid email")
@@ -46,13 +51,14 @@ const Signup = () => {
 
   const formik = useFormik({
     initialValues: {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       passwordConfirmation: ""
     },
     onSubmit: (values) => {
-      const { email, password } = values
-      signup(email, password)
+      signup(values)
     },
     validationSchema
   })
@@ -68,6 +74,30 @@ const Signup = () => {
         Sign Up
       </Typography>
       <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
+        <TextField
+          label='First Name'
+          id='firstName'
+          type='text'
+          variant='outlined'
+          required
+          fullWidth
+          sx={margin}
+          {...formik.getFieldProps('firstName')}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+          helperText={formik.touched.firstName && formik.errors.firstName}
+        />
+        <TextField
+          label='Last Name'
+          id='lastName'
+          type='lastName'
+          variant='outlined'
+          required
+          fullWidth
+          sx={margin}
+          {...formik.getFieldProps('lastName')}
+          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+          helperText={formik.touched.lastName && formik.errors.lastName}
+        />
         <TextField
           label='Email'
           id='email'
