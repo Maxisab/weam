@@ -1,6 +1,6 @@
 // REACT
 // AUTH
-import { useAuthContext } from './useAuthContext'
+import { useAuthContext } from './auth/useAuthContext'
 
 // FIREBASE
 import { firestore } from '../firebase/config'

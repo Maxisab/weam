@@ -12,7 +12,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { lightBlue, orange } from '@mui/material/colors'
 import Navbar from './components/Navbar';
-import { useAuthContext } from './hooks/useAuthContext';
+import { useAuthContext } from './hooks/auth/useAuthContext';
 
 const theme = createTheme({
   palette: {

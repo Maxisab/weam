@@ -1,5 +1,5 @@
 // HOOKS
-import { useLogout } from '../hooks/useLogout';
+import { useLogout } from '../hooks/auth/useLogout';
 // REACT COMPONENTS
 import { NavLink } from 'react-router-dom';
 // MUI

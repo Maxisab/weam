@@ -7,14 +7,18 @@ Complete:
   Create user profile doc in firestore upon signup (test)
   Get user profile doc from firestore after signup or login
   Add user profile data to context
-
-Up next:
-
   Feature: add first and last name to user profile
   -add TextFields (w/ validation) to form
   -then setDoc(userDoc, data) <---- NOT THE ACTUAL SYNTAX
+
+Current: 
+
   Feature: add validation & control to sub form
-  -formik, yup
+    -formik, yup
+  ***Finish phone number validation that can handle ###-###-###, (###)###-####, (###) ###-####, (###) ### - ####
+
+Up next:
+  
   Feature: set up twilio, wire to sub form (who? input)
 
 At some point:
@@ -23,3 +27,17 @@ At some point:
   Set up google voice number, port to twilio
   Set up twilio with node
   -follow link on sms quickstart page to set up environment variables
+
+const subRequest = {
+  creator,
+  event: {
+    type,
+    time,
+    location,
+  },
+  openings: {
+    male,
+    female
+  },
+  contacts
+}

@@ -6,7 +6,7 @@ import Container from '@mui/material/Container'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 // AUTH
-import { useLogin } from '../../hooks/useLogin'
+import { useLogin } from '../../hooks/auth/useLogin'
 // FORMS
 import { useFormik } from 'formik'
 import * as yup from 'yup'

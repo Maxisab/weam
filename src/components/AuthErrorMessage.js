@@ -1,5 +1,5 @@
 import Card from '@mui/material/Card'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from '../hooks/auth/useAuthContext'
 
 const AuthErrorMessage = ({ authType }) => {
   const { authError } = useAuthContext()

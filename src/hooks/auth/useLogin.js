@@ -1,11 +1,11 @@
 // UTILS
-import { useHelpers } from './useHelpers'
+import { useHelpers } from '../useHelpers'
 // REACT
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
-import { useProfile } from './useProfile'
+import { useProfile } from '../useProfile'
 // FIREBASE IMPORTS
-import { auth } from '../firebase/config'
+import { auth } from '../../firebase/config'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 
 export const useLogin = () => {
