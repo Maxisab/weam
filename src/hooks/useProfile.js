@@ -19,7 +19,7 @@ export const useProfile = () => {
 
   const createUserProfile = async (data) => {
     const docRef = doc(collection(firestore, 'userDocs'))
-    setDoc(docRef, data)
+    setDoc(docRef, {...data, id: docRef.id})
     setUser(docRef.id, { signup: true })
   }
 

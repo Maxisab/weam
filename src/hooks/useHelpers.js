@@ -1,3 +1,5 @@
+
+
 export const useHelpers = () => {
 
   const removePassword = (values) => {
@@ -24,7 +26,13 @@ export const useHelpers = () => {
     return `+1${filteredPhoneArray.join('')}`
   }
 
-  
+  const formatData = (data) => {
+    data.date = data.date.toISODate()
+    data.time = data.time.toISOTime()
+    data.dateTimeISO = data.date + 'T' + data.time
+    data.contacts = formatPhone(data.contacts)
+    return data
+  }
 
-  return { removePassword, formatPhone }
+  return { removePassword, formatData }
 }

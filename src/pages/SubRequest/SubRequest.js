@@ -1,5 +1,7 @@
 // REACT
 import { useHelpers } from '../../hooks/useHelpers'
+import { useSubRequest } from '../../hooks/useSubRequest'
+import { useAuthContext } from '../../hooks/auth/useAuthContext'
 // MUI
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -36,7 +38,9 @@ const validationSchema = yup.object({
 })
 
 const SubRequest = () => {
-  const { formatPhone } = useHelpers()
+  const { userData } = useAuthContext()
+  const { formatData} = useHelpers()
+  const { createSubRequest } = useSubRequest()
 
   const formik = useFormik({
     initialValues: {
@@ -47,8 +51,11 @@ const SubRequest = () => {
       contacts: ""
     },
     onSubmit: (values) => {
-      values.contacts = formatPhone(values.contacts)
-      console.log(values)
+      const formattedValues = formatData(values)
+      formattedValues.creator = userData
+      createSubRequest(formattedValues)
+      // console.log(formattedValues)
+      // console.log(userData)
     },
     validationSchema
   })
