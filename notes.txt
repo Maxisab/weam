@@ -10,12 +10,14 @@ Complete:
   Feature: add first and last name to user profile
   -add TextFields (w/ validation) to form
   -then setDoc(userDoc, data) <---- NOT THE ACTUAL SYNTAX
+  Feature: add validation & control to sub form
+    -formik, yup
+  ***Write your own regex for phone number
+  ***Finish phone number validation that can handle ###-###-###, (###)###-####, (###) ###-####, (###) ### - ####
 
 Current: 
 
-  Feature: add validation & control to sub form
-    -formik, yup
-  ***Finish phone number validation that can handle ###-###-###, (###)###-####, (###) ###-####, (###) ### - ####
+  
 
 Up next:
   

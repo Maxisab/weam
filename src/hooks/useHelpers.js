@@ -14,5 +14,17 @@ export const useHelpers = () => {
     return Object.fromEntries(filteredValues)
   }
 
-  return { removePassword }
+  const formatPhone = (phoneString) => {
+    const rawPhoneArray = Array.from(phoneString)
+    const filteredPhoneArray = rawPhoneArray
+      .filter((char) => {
+        const regex = /^[0-9]$/
+        return char.match(regex)
+      })
+    return `+1${filteredPhoneArray.join('')}`
+  }
+
+  
+
+  return { removePassword, formatPhone }
 }

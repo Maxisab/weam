@@ -1,55 +1,53 @@
 // REACT
+import { useHelpers } from '../../hooks/useHelpers'
 // MUI
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker'
 // FORMS
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-// STYLES
-const margin = [{
-  my: '10px'
-}]
-
 // YUP
-const phoneRegExp = /^[0-9]{10}$/
+const phoneRegExp = /^\(?[0-9]{3}\)?\s?-?\.?\s?[0-9]{3}\s?-?\.?\s?[0-9]{4}$/g
 const validationSchema = yup.object({
-  type: yup
+  event: yup
     .string("Enter event description")
     .required("Event description is required"),
   date: yup
     .date()
     .nullable()
-    .required("Event date is required"),
+    .required("Date is required"),
   time: yup
     .date()
     .nullable()
-    .required("Event time is required"),
+    .required("Time is required"),
   location: yup
     .string("Enter event location")
-    .required("Event location is required"),
+    .required("Location is required"),
   contacts: yup
     .string("Enter contact's phone number")
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("Contact's phone number is required")
+    .matches(phoneRegExp, "Please enter a valid 10-digit phone number")
+    .required("Phone number is required")
 })
 
 const SubRequest = () => {
+  const { formatPhone } = useHelpers()
 
   const formik = useFormik({
     initialValues: {
-      type: "",
+      event: "",
       date: null,
       time: null,
       location: "",
       contacts: ""
     },
     onSubmit: (values) => {
+      values.contacts = formatPhone(values.contacts)
       console.log(values)
     },
     validationSchema
@@ -70,15 +68,15 @@ const SubRequest = () => {
         <Stack spacing={3}>
           <TextField
             label='For what?'
-            id='type'
+            id='event'
             variant='outlined'
             required
             fullWidth
-            {...formik.getFieldProps('type')}
-            error={formik.touched.type && Boolean(formik.errors.type)}
-            helperText={formik.touched.type && formik.errors.type}
+            {...formik.getFieldProps('event')}
+            error={formik.touched.event && Boolean(formik.errors.event)}
+            helperText={formik.touched.event && formik.errors.event}
           />
-          <DesktopDatePicker
+          <MobileDatePicker
             renderInput={(props) => (
               <TextField 
                 {...props}
