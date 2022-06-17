@@ -34,7 +34,10 @@ const validationSchema = yup.object({
   contacts: yup
     .string("Enter contact's phone number")
     .matches(phoneRegExp, "Please enter a valid 10-digit phone number")
-    .required("Phone number is required")
+    .required("Phone number is required"),
+  players: yup
+    .string("Enter the number of players needed")
+    .required("Number of players needed is required")
 })
 
 const SubRequest = () => {
@@ -138,6 +141,16 @@ const SubRequest = () => {
             {...formik.getFieldProps('contacts')}
             error={formik.touched.contacts && Boolean(formik.errors.contacts)}
             helperText={formik.touched.contacts && formik.errors.contacts}
+          />
+          <TextField
+            label='How many players?'
+            id='players'
+            variant='outlined'
+            required
+            fullWidth
+            {...formik.getFieldProps('players')}
+            error={formik.touched.players && Boolean(formik.errors.players)}
+            helperText={formik.touched.players && formik.errors.players}
           />
           <Button 
             variant="contained"
