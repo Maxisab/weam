@@ -35,9 +35,12 @@ const validationSchema = yup.object({
     .string("Enter contact's phone number")
     .matches(phoneRegExp, "Please enter a valid 10-digit phone number")
     .required("Phone number is required"),
-  players: yup
-    .string("Enter the number of players needed")
-    .required("Number of players needed is required")
+  males: yup
+    .string("Enter event location")
+    .required("Location is required"),
+  females: yup
+    .string("Enter event location")
+    .required("Location is required")
 })
 
 const SubRequest = () => {
@@ -143,14 +146,24 @@ const SubRequest = () => {
             helperText={formik.touched.contacts && formik.errors.contacts}
           />
           <TextField
-            label='How many players?'
-            id='players'
+            label='Male players?'
+            id='males'
             variant='outlined'
             required
             fullWidth
-            {...formik.getFieldProps('players')}
-            error={formik.touched.players && Boolean(formik.errors.players)}
-            helperText={formik.touched.players && formik.errors.players}
+            {...formik.getFieldProps('males')}
+            error={formik.touched.males && Boolean(formik.errors.males)}
+            helperText={formik.touched.males && formik.errors.males}
+          />
+          <TextField
+            label='Female players?'
+            id='females'
+            variant='outlined'
+            required
+            fullWidth
+            {...formik.getFieldProps('females')}
+            error={formik.touched.females && Boolean(formik.errors.females)}
+            helperText={formik.touched.females && formik.errors.females}
           />
           <Button 
             variant="contained"
