@@ -13,8 +13,11 @@ import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker'
 // FORMS
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import MenuItem from '@mui/material/MenuItem'
+import Grid from '@mui/material/Grid'
+import { Box } from '@mui/material'
 
-// YUP
+///// YUP VALIDATION SCHEMA /////
 const phoneRegExp = /^\(?[0-9]{3}\)?\s?-?\.?\s?[0-9]{3}\s?-?\.?\s?[0-9]{4}$/g
 const validationSchema = yup.object({
   event: yup
@@ -36,12 +39,21 @@ const validationSchema = yup.object({
     .matches(phoneRegExp, "Please enter a valid 10-digit phone number")
     .required("Phone number is required"),
   males: yup
-    .string("Enter event location")
-    .required("Location is required"),
+    .number()
+    .required("Number of male players is required")
+    .positive()
+    .integer()
+    .min(0, "Must be a positive number")
+    .max(9, "Number cannot be greater than 9"),
   females: yup
-    .string("Enter event location")
-    .required("Location is required")
+  .number()
+  .required("Number of female players is required")
+  .positive()
+  .integer()
+  .min(0, "Must be a positive number")
+  .max(9, "Number cannot be greater than 9"),
 })
+///// END VALIDATION SCHEMA /////
 
 const SubRequest = () => {
   const { userData } = useAuthContext()
@@ -50,15 +62,18 @@ const SubRequest = () => {
 
   const formik = useFormik({
     initialValues: {
+      creator: null,
       event: "",
-      date: null,
-      time: null,
+      date: "",
+      time: "",
       location: "",
-      contacts: ""
+      contacts: "",
+      males: "",
+      females: ""
     },
     onSubmit: (values) => {
       const formattedValues = formatData(values)
-      formattedValues.creator = userData
+      formattedValues.creator = userData || "guest"
       createSubRequest(formattedValues)
       // console.log(formattedValues)
       // console.log(userData)
@@ -66,8 +81,11 @@ const SubRequest = () => {
     validationSchema
   })
 
+  const numOptions = [...Array(10).keys()]
+
   return (
     <Container sx={{my: 10}} className="" maxWidth="xs">
+      
       <Typography 
         variant="h6" 
         color="initial" 
@@ -77,8 +95,10 @@ const SubRequest = () => {
       >
         FIND SUBS
       </Typography>
+
       <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
         <Stack spacing={3}>
+
           <TextField
             label='For what?'
             id='event'
@@ -89,6 +109,7 @@ const SubRequest = () => {
             error={formik.touched.event && Boolean(formik.errors.event)}
             helperText={formik.touched.event && formik.errors.event}
           />
+
           <MobileDatePicker
             renderInput={(props) => (
               <TextField 
@@ -107,6 +128,7 @@ const SubRequest = () => {
               formik.setFieldValue("date", value)
             )}
           />
+
           <MobileTimePicker
             renderInput={(props) => (
               <TextField 
@@ -125,6 +147,7 @@ const SubRequest = () => {
               formik.setFieldValue("time", value)
             )}
           />
+
           <TextField
             label='Where?'
             id='location'
@@ -135,36 +158,61 @@ const SubRequest = () => {
             error={formik.touched.location && Boolean(formik.errors.location)}
             helperText={formik.touched.location && formik.errors.location}
           />
+
           <TextField
             label='Who?'
             id='contacts'
             variant='outlined'
+            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
             required
             fullWidth
             {...formik.getFieldProps('contacts')}
             error={formik.touched.contacts && Boolean(formik.errors.contacts)}
             helperText={formik.touched.contacts && formik.errors.contacts}
           />
-          <TextField
-            label='Male players?'
-            id='males'
-            variant='outlined'
-            required
-            fullWidth
-            {...formik.getFieldProps('males')}
-            error={formik.touched.males && Boolean(formik.errors.males)}
-            helperText={formik.touched.males && formik.errors.males}
-          />
-          <TextField
-            label='Female players?'
-            id='females'
-            variant='outlined'
-            required
-            fullWidth
-            {...formik.getFieldProps('females')}
-            error={formik.touched.females && Boolean(formik.errors.females)}
-            helperText={formik.touched.females && formik.errors.females}
-          />
+
+          <Box>
+            <Grid container spacing={1}>
+
+              <Grid item xs>
+                <TextField
+                  label='Male players?'
+                  id='males'
+                  variant='outlined'
+                  select={true}
+                  fullWidth
+                  required
+                  {...formik.getFieldProps('males')}
+                  error={formik.touched.males && Boolean(formik.errors.males)}
+                  helperText={formik.touched.males && formik.errors.males}
+                >
+                  {numOptions.map(num => {
+                    return <MenuItem key={`num${num}`} value={num}>{num}</MenuItem>
+                  })}
+                </TextField>
+              </Grid>
+
+              <Grid item xs>
+                <TextField
+                  label='Female players?'
+                  id='females'
+                  variant='outlined'
+                  select={true}
+                  fullWidth
+                  required
+                  {...formik.getFieldProps('females')}
+                  error={formik.touched.females && Boolean(formik.errors.females)}
+                  helperText={formik.touched.females && formik.errors.females}
+                >
+                  {numOptions.map(num => {
+                    return <MenuItem key={`num${num}`} value={num}>{num}</MenuItem>
+                  })}
+                </TextField>
+              </Grid>
+
+            </Grid>
+          </Box>
+
           <Button 
             variant="contained"
             color="primary"
@@ -173,6 +221,7 @@ const SubRequest = () => {
           >
           Send Request
           </Button>
+
         </Stack>
       </form>
 

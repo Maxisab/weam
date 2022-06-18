@@ -18,6 +18,10 @@ Complete:
 Current: 
 
   Feature: create subRequest doc in firestore
+  Feature: add 'players needed' field to form
+  ***'Players needed field' should be a form subsection with 2 sub field - quantity & type (male, female, over 30, etc)
+  ***Form should 
+  ***add confirmation popup and redirect
 
 Up next:
   
