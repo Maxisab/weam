@@ -19,7 +19,30 @@ const theme = createTheme({
     secondary: orange,
   },
   typography: {
-    fontFamily: '"Permanent Marker", "cursive"'
+    fontFamily: '"Permanent Marker", "cursive"',
+  },
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          fontFamily: '"Roboto","Helvetica","Arial",sans-serif;'
+        }
+      }
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontFamily: '"Roboto","Helvetica","Arial",sans-serif;'
+        }
+      }
+    },
+    MuiDatePicker: {
+      styleOverrides: {
+        root: {
+          fontFamily: '"Roboto","Helvetica","Arial",sans-serif;'
+        }
+      }
+    }
   }
 })
 

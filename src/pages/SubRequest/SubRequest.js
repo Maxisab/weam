@@ -85,14 +85,14 @@ const SubRequest = () => {
   const numOptions = [...Array(10).keys()]
 
   return (
-    <Container sx={{my: 10}} className="" maxWidth="xs">
+    <Container sx={{my: 6}} className="" maxWidth="xs">
       
       <Typography 
-        variant="h6" 
+        variant="h4" 
         color="initial" 
         component="h2" 
         gutterBottom
-        sx={{my: 2}}
+        sx={{m: 4}}
       >
         FIND SUBS
       </Typography>
