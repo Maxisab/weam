@@ -1,5 +1,7 @@
 // REACT
 import { NavLink } from 'react-router-dom'
+import AuthErrorMessage from '../../components/AuthErrorMessage'
+import BackButton from '../../components/BackButton'
 // MUI
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
@@ -10,7 +12,6 @@ import { useSignup } from '../../hooks/auth/useSignup'
 // FORMS
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import AuthErrorMessage from '../../components/AuthErrorMessage'
 
 const validationSchema = yup.object({
   firstName: yup
@@ -154,6 +155,8 @@ const Signup = () => {
         Already registered? 
         <NavLink to={'/login'} style={linkStyle} >Log In</NavLink>
       </Typography>
+
+      <BackButton />
 
     </Container>
   )
