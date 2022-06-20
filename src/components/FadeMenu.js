@@ -16,6 +16,7 @@ export default function FadeMenu() {
   const { logout } = useLogout()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     if (!user) {
       navigate('/')
@@ -23,13 +24,16 @@ export default function FadeMenu() {
       setAnchorEl(event.currentTarget);
     }
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleProfile = () => {
     handleClose()
     // navigate('/id')
   }
+  
   const handleLogout = () => {
     handleClose()
     logout()
