@@ -7,17 +7,29 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 // HOOKS
 import { useLogout } from '../hooks/auth/useLogout';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/auth/useAuthContext';
 
 export default function FadeMenu() {
+  const { user } = useAuthContext()
+  const navigate = useNavigate()
   const { logout } = useLogout()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    if (!user) {
+      navigate('/')
+    } else {
+      setAnchorEl(event.currentTarget);
+    }
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleProfile = () => {
+    handleClose()
+    // navigate('/id')
+  }
   const handleLogout = () => {
     handleClose()
     logout()
@@ -44,7 +56,7 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem dense={true} onClick={handleClose}>Profile</MenuItem>
+        <MenuItem dense={true} onClick={handleProfile}>Profile</MenuItem>
         <MenuItem dense={true} onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </Box>

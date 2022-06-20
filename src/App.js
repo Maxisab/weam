@@ -6,6 +6,7 @@ import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import SubRequest from './pages/SubRequest/SubRequest';
 import FadeMenu from './components/FadeMenu';
+import Profile from './pages/Profile/Profile';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // HOOKS
 import { useAuthContext } from './hooks/auth/useAuthContext';
@@ -35,13 +36,6 @@ const theme = createTheme({
           fontFamily: '"Roboto","Helvetica","Arial",sans-serif;'
         }
       }
-    },
-    MuiDatePicker: {
-      styleOverrides: {
-        root: {
-          fontFamily: '"Roboto","Helvetica","Arial",sans-serif;'
-        }
-      }
     }
   }
 })
@@ -60,6 +54,7 @@ function App() {
             <Route path="/sub-request" element={<SubRequest />} />
             <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
             <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+            <Route path="/:id" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
