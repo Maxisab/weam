@@ -4,7 +4,9 @@ import BackButton from '../../components/BackButton'
 import AuthErrorMessage from '../../components/AuthErrorMessage'
 // MUI
 import Button from '@mui/material/Button'
-import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 // AUTH
@@ -12,6 +14,7 @@ import { useLogin } from '../../hooks/auth/useLogin'
 // FORMS
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import NotRegistered from '../../components/NotRegistered'
 
 const validationSchema = yup.object({
   email: yup
@@ -29,10 +32,6 @@ const Login = () => {
 
   const margin = {
     my: '10px'
-  }
-
-  const signupText = {
-    textAlign: 'left'
   }
 
   const linkStyle = {
@@ -53,7 +52,8 @@ const Login = () => {
 
 
   return (
-    <Container sx={[{my: 8}]} className="login" maxWidth="xs">
+    <Stack>
+
       <Typography 
         variant="h4" 
         color="initial" 
@@ -63,55 +63,65 @@ const Login = () => {
       >
         Log In
       </Typography>
-      <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
-        <TextField
-          label='Email'
-          id='email'
-          type='email'
-          variant='outlined'
-          required
-          fullWidth
-          sx={margin}
-          {...formik.getFieldProps('email')}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
-        <TextField
-          label='Password'
-          id='password'
-          type='password'
-          variant='outlined'
-          required
-          fullWidth
-          sx={margin}
-          {...formik.getFieldProps('password')}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-        />
-        <Button 
-          sx={margin}
-          variant="contained"
-          color="primary"
-          type='submit'
-          fullWidth
-        >
-        Log In  
-        </Button>
-        {error && <AuthErrorMessage authType='login' />}
-      </form>
-      <Typography 
-        variant="subtitle2"
-        component="div"
-        gutterBottom
-        sx={signupText}
-      >
-        Not registered yet? 
-        <NavLink to={'/signup'} style={linkStyle} >Sign Up</NavLink>
-      </Typography>
 
+      <Grid container alignItems='center' justifyContent='center' sx={{  }}>
+
+        <Grid item xs={10} sm={8} md={6} lg={4}>
+          <Paper elevation={3} sx={{ py: 6 }}>
+            <Grid container alignItems='center' justifyContent='center'>
+
+              <Grid item xs={8}>
+                <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
+                    <TextField
+                      label='Email'
+                      id='email'
+                      type='email'
+                      variant='outlined'
+                      required
+                      fullWidth
+                      sx={margin}
+                      {...formik.getFieldProps('email')}
+                      error={formik.touched.email && Boolean(formik.errors.email)}
+                      helperText={formik.touched.email && formik.errors.email}
+                    />
+                    <TextField
+                      label='Password'
+                      id='password'
+                      type='password'
+                      variant='outlined'
+                      required
+                      fullWidth
+                      sx={margin}
+                      {...formik.getFieldProps('password')}
+                      error={formik.touched.password && Boolean(formik.errors.password)}
+                      helperText={formik.touched.password && formik.errors.password}
+                    />
+                    <Button 
+                      sx={margin}
+                      variant="contained"
+                      color="primary"
+                      type='submit'
+                      fullWidth
+                    >
+                    Log In  
+                    </Button>
+                  {error && <AuthErrorMessage authType='login' />}
+                </form>
+              </Grid>
+
+              <Grid item xs={7}>
+                <NotRegistered />
+              </Grid>
+
+            </Grid>
+          </Paper>
+        </Grid>
+
+      </Grid>
       <BackButton />
+    </Stack>
 
-    </Container>
+    
   )
 }
 export default Login
