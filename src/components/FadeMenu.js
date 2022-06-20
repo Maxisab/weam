@@ -31,7 +31,8 @@ export default function FadeMenu() {
 
   const handleProfile = () => {
     handleClose()
-    // navigate('/id')
+    if (!user) return false
+    navigate('/profile')
   }
   
   const handleLogout = () => {

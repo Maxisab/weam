@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
+import BackButton from '../../components/BackButton'
 
 
 const Profile = () => {
@@ -54,6 +55,8 @@ const Profile = () => {
           </Paper>
         </Grid>
       </Grid>
+
+      <BackButton />
 
     </Stack>
   )

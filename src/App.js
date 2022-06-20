@@ -75,7 +75,7 @@ function App() {
             <Route path="/sub-request" element={<SubRequest />} />
             <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
             <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-            <Route path="/profile" element={user ? <Navigate to="/" /> : <Profile />} />
+            <Route path="/profile" element={user ? <Profile /> : <Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
