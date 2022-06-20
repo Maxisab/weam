@@ -30,15 +30,6 @@ const validationSchema = yup.object({
 const Login = () => {
   const { error, login } = useLogin()
 
-  const margin = {
-    my: '10px'
-  }
-
-  const linkStyle = {
-    marginLeft: '5px',
-    textDecoration: 'none'
-  }
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -61,7 +52,7 @@ const Login = () => {
         gutterBottom
         sx={{m: 4}}
       >
-        Log In
+        LOG IN
       </Typography>
 
       <Grid container alignItems='center' justifyContent='center' sx={{  }}>
@@ -79,7 +70,7 @@ const Login = () => {
                       variant='outlined'
                       required
                       fullWidth
-                      sx={margin}
+                      sx={{ my: '10px' }}
                       {...formik.getFieldProps('email')}
                       error={formik.touched.email && Boolean(formik.errors.email)}
                       helperText={formik.touched.email && formik.errors.email}
@@ -91,13 +82,13 @@ const Login = () => {
                       variant='outlined'
                       required
                       fullWidth
-                      sx={margin}
+                      sx={{ my: '10px' }}
                       {...formik.getFieldProps('password')}
                       error={formik.touched.password && Boolean(formik.errors.password)}
                       helperText={formik.touched.password && formik.errors.password}
                     />
                     <Button 
-                      sx={margin}
+                      sx={{ my: '10px' }}
                       variant="contained"
                       color="primary"
                       type='submit'

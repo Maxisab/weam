@@ -4,7 +4,9 @@ import AuthErrorMessage from '../../components/AuthErrorMessage'
 import BackButton from '../../components/BackButton'
 // MUI
 import Button from '@mui/material/Button'
-import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 // HOOKS
@@ -37,10 +39,6 @@ const validationSchema = yup.object({
 const Signup = () => {
   const { error, signup } = useSignup()
 
-  const margin = {
-    my: '10px'
-  }
-
   const loginText = {
     textAlign: 'left'
   }
@@ -65,101 +63,118 @@ const Signup = () => {
   })
 
   return (
-    <Container sx={[{my: 8}]} className="signup" maxWidth="xs">
+    <Stack>
+
       <Typography 
         variant="h4" 
         color="initial" 
         component="h2" 
         gutterBottom
-        sx={{m: 4}}
+        sx={{mt: 0, mb: 3}}
       >
         SIGN UP
       </Typography>
-      <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
-        <TextField
-          label='First Name'
-          id='firstName'
-          type='text'
-          variant='outlined'
-          required
-          fullWidth
-          sx={margin}
-          {...formik.getFieldProps('firstName')}
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          helperText={formik.touched.firstName && formik.errors.firstName}
-        />
-        <TextField
-          label='Last Name'
-          id='lastName'
-          type='lastName'
-          variant='outlined'
-          required
-          fullWidth
-          sx={margin}
-          {...formik.getFieldProps('lastName')}
-          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-          helperText={formik.touched.lastName && formik.errors.lastName}
-        />
-        <TextField
-          label='Email'
-          id='email'
-          type='email'
-          variant='outlined'
-          required
-          fullWidth
-          sx={margin}
-          {...formik.getFieldProps('email')}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
-        <TextField
-          label='Password'
-          id='password'
-          type='password'
-          variant='outlined'
-          required
-          fullWidth
-          sx={margin}
-          {...formik.getFieldProps('password')}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-        />
-        <TextField
-          label='Confirm Password'
-          id='passwordConfirmation'
-          type='password'
-          variant='outlined'
-          required
-          fullWidth
-          sx={margin}
-          {...formik.getFieldProps('passwordConfirmation')}
-          error={formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation)}
-          helperText={formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
-        />
-        <Button 
-          sx={margin}
-          variant="contained"
-          color="primary"
-          type='submit'
-          fullWidth
-        >
-        Sign Up  
-        </Button>
-        {error && <AuthErrorMessage authType="signup" />}
-      </form>
-      <Typography 
-        variant="subtitle2"
-        component="div"
-        gutterBottom
-        sx={loginText}
-      >
-        Already registered? 
-        <NavLink to={'/login'} style={linkStyle} >Log In</NavLink>
-      </Typography>
 
+      <Grid container alignItems='center' justifyContent='center' >
+
+        <Grid item xs={10} sm={8} md={6} lg={4}>
+          <Paper elevation={3} sx={{ py: 6 }}>
+            <Grid container alignItems='center' justifyContent='center'>
+
+              <Grid item xs={8}>
+                <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
+                  <TextField
+                    label='First Name'
+                    id='firstName'
+                    type='text'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    sx={{ my: '10px' }}
+                    {...formik.getFieldProps('firstName')}
+                    error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                    helperText={formik.touched.firstName && formik.errors.firstName}
+                  />
+                  <TextField
+                    label='Last Name'
+                    id='lastName'
+                    type='lastName'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    sx={{ my: '10px' }}
+                    {...formik.getFieldProps('lastName')}
+                    error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                    helperText={formik.touched.lastName && formik.errors.lastName}
+                  />
+                  <TextField
+                    label='Email'
+                    id='email'
+                    type='email'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    sx={{ my: '10px' }}
+                    {...formik.getFieldProps('email')}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                  />
+                  <TextField
+                    label='Password'
+                    id='password'
+                    type='password'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    sx={{ my: '10px' }}
+                    {...formik.getFieldProps('password')}
+                    error={formik.touched.password && Boolean(formik.errors.password)}
+                    helperText={formik.touched.password && formik.errors.password}
+                  />
+                  <TextField
+                    label='Confirm Password'
+                    id='passwordConfirmation'
+                    type='password'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    sx={{ my: '10px' }}
+                    {...formik.getFieldProps('passwordConfirmation')}
+                    error={formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation)}
+                    helperText={formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
+                  />
+                  <Button
+                    sx={{ my: '10px' }}
+                    variant="contained"
+                    color="primary"
+                    type='submit'
+                    fullWidth
+                  >
+                  Sign Up  
+                  </Button>
+                  {error && <AuthErrorMessage authType="signup" />}
+                </form>
+              </Grid>
+
+              <Grid item xs={7}>
+                <Typography 
+                  variant="subtitle2"
+                  component="div"
+                  gutterBottom
+                  sx={loginText}
+                >
+                  Already registered? 
+                  <NavLink to={'/login'} style={linkStyle} >Log In</NavLink>
+                </Typography>
+              </Grid>
+
+            </Grid>
+          </Paper>
+        </Grid>
+
+      </Grid>
       <BackButton />
-
-    </Container>
+    </Stack>
   )
 }
 export default Signup
