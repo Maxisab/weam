@@ -34,16 +34,10 @@ At some point:
   Set up twilio with node
   -follow link on sms quickstart page to set up environment variables
 
-const subRequest = {
-  creator,
-  event: {
-    type,
-    time,
-    location,
-  },
-  openings: {
-    male,
-    female
-  },
-  contacts
-}
+///////////////////////////////////////
+
+
+Link to (`/${target.id}`)
+if (user.id === params.id) {
+
+} 

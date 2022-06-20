@@ -1,4 +1,5 @@
 // REACT
+import ContactList from '../../components/ContactList'
 import { useAuthContext } from '../../hooks/auth/useAuthContext'
 // MUI
 import Box from "@mui/material/Box"
@@ -30,11 +31,11 @@ const Profile = () => {
         alignItems='center'
         justifyContent='center'
       >
-        <Grid item xs={8} md={6} lg={4}>
+        <Grid item xs={10} md={6} lg={4}>
           <Paper elevation={3} sx={{ p: 5 }}>
             <Grid container spacing={2}>
 
-              <Grid item xs={8}>
+              <Grid item xs={12}>
                 <Box>
                   <Typography textAlign='left' gutterBottom>
                     Email
@@ -45,9 +46,8 @@ const Profile = () => {
                   <Typography textAlign='left' gutterBottom>
                     Contacts
                   </Typography>
-                  <Box sx={{ textAlign: 'left', m: 3 }} >{userData ? userData.contacts : 'Contacts go here'}</Box>
+                  <ContactList />
                 </Box>
-
               </Grid>
 
             </Grid>
