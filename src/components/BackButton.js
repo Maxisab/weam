@@ -1,13 +1,12 @@
 // REACT
-import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 // MUI
-import Button from '@mui/material/Button'
+import Link from '@mui/material/Link'
 
 const BackButton = () => {
-  const navigate = useNavigate()
 
   return (
-    <Button variant="text" sx={{ mt: 6 }}onClick={() => navigate('/')}>Back to Home</Button>
+    <Link component={NavLink} sx={{ marginTop: 6 }} to={'/'} >Back to Home</Link>
   )
 }
 export default BackButton

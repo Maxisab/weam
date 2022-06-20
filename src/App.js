@@ -30,6 +30,14 @@ const theme = createTheme({
         }
       }
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          fontFamily: '"Permanent Marker", "cursive"',
+          textDecoration: 'none'
+        }
+      }
+    },
     MuiMenuItem: {
       styleOverrides: {
         root: {
