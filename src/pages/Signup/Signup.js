@@ -2,6 +2,7 @@
 import { NavLink } from 'react-router-dom'
 import AuthErrorMessage from '../../components/AuthErrorMessage'
 import BackButton from '../../components/BackButton'
+import AlreadyRegistered from '../../components/AlreadyRegistered'
 // MUI
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
@@ -157,15 +158,7 @@ const Signup = () => {
               </Grid>
 
               <Grid item xs={7}>
-                <Typography 
-                  variant="subtitle2"
-                  component="div"
-                  gutterBottom
-                  sx={loginText}
-                >
-                  Already registered? 
-                  <NavLink to={'/login'} style={linkStyle} >Log In</NavLink>
-                </Typography>
+                <AlreadyRegistered />
               </Grid>
 
             </Grid>
