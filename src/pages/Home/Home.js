@@ -24,10 +24,10 @@ const Home = () => {
   const { logout } = useLogout()
 
   return (
-    <Grid container alignItems='center' justifyContent='center' sx={{ mt: 10, p: 8 }}>
+    <Grid container alignItems='center' justifyContent='center' sx={{ mt: 10, p: 6 }}>
 
-      <Grid item xs={10} md={6} lg={4}>
-        <Paper elevation={3} sx={{ p: 8 }}>
+      <Grid item xs={10} sm={8} md={6} lg={4}>
+        <Paper elevation={3} sx={{ py: 12 }}>
           <Grid container alignItems='center' justifyContent='center'>
 
             <Grid item xs={12}>

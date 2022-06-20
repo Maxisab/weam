@@ -67,12 +67,13 @@ const Signup = () => {
   return (
     <Container sx={[{my: 8}]} className="signup" maxWidth="xs">
       <Typography 
-        variant="h6" 
+        variant="h4" 
         color="initial" 
         component="h2" 
         gutterBottom
+        sx={{m: 4}}
       >
-        Sign Up
+        SIGN UP
       </Typography>
       <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
         <TextField

@@ -55,10 +55,11 @@ const Login = () => {
   return (
     <Container sx={[{my: 8}]} className="login" maxWidth="xs">
       <Typography 
-        variant="h6" 
+        variant="h4" 
         color="initial" 
         component="h2" 
         gutterBottom
+        sx={{m: 4}}
       >
         Log In
       </Typography>
