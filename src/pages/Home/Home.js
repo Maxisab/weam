@@ -40,7 +40,10 @@ const Home = () => {
               {!user && <Button component={NavLink} to="/signup" sx={btn} variant="contained" size="large">Sign Up</Button>}
             </Grid>
             <Grid item xs={12}>
-              {user && <Button component={NavLink} to="/profile" sx={btn} variant="contained" size="large">My Profile</Button>}
+              {user && <Button component={NavLink} to="/profile" sx={btn} variant="contained" size="large">Add Contacts</Button>}
+            </Grid>
+            <Grid item xs={12}>
+              {user && <Button component={NavLink} to="/profile" sx={btn} variant="contained" size="large">View Profile</Button>}
             </Grid>
             <Grid item xs={12}>
               {user && <Button onClick={logout} sx={btn} variant="contained" size="large">Log Out</Button>}
