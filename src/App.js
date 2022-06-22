@@ -7,6 +7,7 @@ import Login from './pages/Login/Login';
 import SubRequest from './pages/SubRequest/SubRequest';
 import FadeMenu from './components/FadeMenu';
 import Profile from './pages/Profile/Profile';
+import Contacts from './pages/Contacts/Contacts';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // HOOKS
 import { useAuthContext } from './hooks/auth/useAuthContext';
@@ -84,6 +85,7 @@ function App() {
             <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
             <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
             <Route path="/profile" element={user ? <Profile /> : <Navigate to="/" />} />
+            <Route path="/contacts" element={user ? <Contacts /> : <Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

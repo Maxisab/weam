@@ -1,11 +1,12 @@
 import * as React from 'react';
+import AddIcon from '@mui/icons-material/Add'
+import Fab from '@mui/material/Fab'
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
@@ -29,11 +30,6 @@ export default function ContactList () {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
-  // const handleChangeRowsPerPage = (event) => {
-  //   setRowsPerPage(+event.target.value);
-  //   setPage(0);
-  // };
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -73,6 +69,9 @@ export default function ContactList () {
           </TableBody>
         </Table>
       </TableContainer>
+      <Fab component='button' size="small" sx={{ m: 2, position: 'relative', left: '40%' }} color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
     </Paper>
   );
 }

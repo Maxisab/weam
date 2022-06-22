@@ -58,7 +58,7 @@ const validationSchema = yup.object({
 
 const SubRequest = () => {
   const { userData } = useAuthContext()
-  const { formatData} = useHelpers()
+  const { formatData } = useHelpers()
   const { createSubRequest } = useSubRequest()
 
   const formik = useFormik({

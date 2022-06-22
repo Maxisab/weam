@@ -6,14 +6,6 @@ import { NavLink } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/auth/useAuthContext'
 import { useLogout } from '../../hooks/auth/useLogout';
 
-const center = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '60vh'
-}
-
 const btn = [{
   mx: 'auto',
   my: '10px'
@@ -40,7 +32,7 @@ const Home = () => {
               {!user && <Button component={NavLink} to="/signup" sx={btn} variant="contained" size="large">Sign Up</Button>}
             </Grid>
             <Grid item xs={12}>
-              {user && <Button component={NavLink} to="/profile" sx={btn} variant="contained" size="large">Add Contacts</Button>}
+              {user && <Button component={NavLink} to="/contacts" sx={btn} variant="contained" size="large">Add Contacts</Button>}
             </Grid>
             <Grid item xs={12}>
               {user && <Button component={NavLink} to="/profile" sx={btn} variant="contained" size="large">View Profile</Button>}
