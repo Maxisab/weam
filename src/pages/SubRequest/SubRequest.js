@@ -106,7 +106,6 @@ const SubRequest = () => {
               <Grid item xs={8}>
                 <form noValidate autoComplete='off' onSubmit={formik.handleSubmit}>
                   <Stack spacing={1}>
-
                     <TextField
                       label='For what?'
                       id='event'
@@ -117,7 +116,6 @@ const SubRequest = () => {
                       error={formik.touched.event && Boolean(formik.errors.event)}
                       helperText={formik.touched.event && formik.errors.event}
                     />
-
                     <MobileDatePicker
                       renderInput={(props) => (
                         <TextField 
@@ -136,7 +134,6 @@ const SubRequest = () => {
                         formik.setFieldValue("date", value)
                       )}
                     />
-
                     <MobileTimePicker
                       renderInput={(props) => (
                         <TextField 
@@ -155,7 +152,6 @@ const SubRequest = () => {
                         formik.setFieldValue("time", value)
                       )}
                     />
-
                     <TextField
                       label='Where?'
                       id='location'
@@ -178,7 +174,6 @@ const SubRequest = () => {
                       error={formik.touched.contacts && Boolean(formik.errors.contacts)}
                       helperText={formik.touched.contacts && formik.errors.contacts}
                     />
-
                     <Box>
                       <Grid container spacing={1}>
 
@@ -220,7 +215,6 @@ const SubRequest = () => {
 
                       </Grid>
                     </Box>
-
                     <Button 
                       variant="contained"
                       color="primary"
@@ -229,7 +223,6 @@ const SubRequest = () => {
                     >
                       Send Request
                     </Button>
-
                   </Stack>
                 </form>
               </Grid>
