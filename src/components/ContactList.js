@@ -1,6 +1,4 @@
 import * as React from 'react';
-import AddIcon from '@mui/icons-material/Add'
-import Fab from '@mui/material/Fab'
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -69,9 +67,6 @@ export default function ContactList () {
           </TableBody>
         </Table>
       </TableContainer>
-      <Fab component='button' size="small" sx={{ m: 2, position: 'relative', left: '40%' }} color="primary" aria-label="add">
-        <AddIcon />
-      </Fab>
     </Paper>
   );
 }
