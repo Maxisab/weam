@@ -1,4 +1,6 @@
 import * as React from 'react';
+import AddIcon from '@mui/icons-material/Add'
+import Fab from '@mui/material/Fab'
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -30,6 +32,7 @@ export default function ContactList () {
   };
 
   return (
+    <>
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer >
         <Table stickyHeader aria-label="sticky table">
@@ -68,5 +71,9 @@ export default function ContactList () {
         </Table>
       </TableContainer>
     </Paper>
+            <Fab component='button' size="small" sx={{ mt: 3, position: 'relative', left: '50%' }} color="primary" aria-label="add">
+              <AddIcon />
+            </Fab>
+    </>
   );
 }
