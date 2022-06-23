@@ -49,7 +49,7 @@ export default function FadeMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <Typography className='weam' variant="h4" component="p" sx={{ letterSpacing: '4px' }}>WEAM</Typography>
+        <Typography className='weam' variant="h4" component="h1" sx={{ letterSpacing: '4px' }}>WEAM</Typography>
       </Button>
       <Menu
         id="fade-menu"

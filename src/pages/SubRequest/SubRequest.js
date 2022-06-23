@@ -47,12 +47,12 @@ const validationSchema = yup.object({
     .min(0, "Must be a positive number")
     .max(9, "Number cannot be greater than 9"),
   females: yup
-  .number()
-  .required("Number of female players is required")
-  .positive()
-  .integer()
-  .min(0, "Must be a positive number")
-  .max(9, "Number cannot be greater than 9"),
+    .number()
+    .required("Number of female players is required")
+    .positive()
+    .integer()
+    .min(0, "Must be a positive number")
+    .max(9, "Number cannot be greater than 9"),
 })
 ///// END VALIDATION SCHEMA /////
 
@@ -97,7 +97,7 @@ const SubRequest = () => {
         FIND SUBS
       </Typography>
 
-      <Grid container alignItems='center' justifyContent='center' sx={{  }}>
+      <Grid container alignItems='center' justifyContent='center' >
 
         <Grid item xs={10} sm={8} md={6} lg={4}>
           <Paper elevation={3} sx={{ py: 6 }}>

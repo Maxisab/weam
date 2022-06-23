@@ -9,12 +9,14 @@ import { AuthContextProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
+  {/* <React.StrictMode> */}
     <CssBaseline />
     <LocalizationProvider dateAdapter={AdapterLuxon}>
       <AuthContextProvider>
         <App />
       </AuthContextProvider>
     </LocalizationProvider>
-  </React.StrictMode>
+  {/* </React.StrictMode> */}
+  </>
 );

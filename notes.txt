@@ -36,8 +36,10 @@ At some point:
 
 ///////////////////////////////////////
 
+FEATURES:
 
-Link to (`/${target.id}`)
-if (user.id === params.id) {
-
-} 
+Allow user to edit profile data,
+Add 'preferred contact' to user profile,
+Make email a contact option,
+Add forgot password feature,
+Add verify account via email feature
