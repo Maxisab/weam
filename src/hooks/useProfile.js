@@ -11,7 +11,9 @@ import {
   doc, 
   setDoc, 
   getDoc, 
-  getDocs 
+  getDocs, 
+  updateDoc,
+  arrayUnion
 } from 'firebase/firestore'
 
 export const useProfile = () => {
@@ -39,14 +41,19 @@ export const useProfile = () => {
       }
     }
     const userDoc = await fetchUserDoc()
-
     // WITH USER DOC, SET CONTEXT
     if (userDoc.exists()) {
       dispatch({ type: 'SET_USER', payload: userDoc.data() })
     } else {
       console.log("No such document!");
     }
+  }
 
+  const addContact = async (contact) => {
+    const userRef = doc(firestore, `userDocs`, userRef)
+    await updateDoc(userRef, {
+      contacts: arrayUnion(contact)
+    })
   }
 
   return { createUserProfile, setUser }

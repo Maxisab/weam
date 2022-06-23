@@ -1,6 +1,7 @@
+// REACT
 import * as React from 'react';
-import AddIcon from '@mui/icons-material/Add'
-import Fab from '@mui/material/Fab'
+import AddContact from './AddContact';
+// MUI
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,8 +15,8 @@ const columns = [
   { id: 'phone', label: 'Phone', minWidth: 100 }
 ];
 
-function createData(name, phone) {
-  return { name, phone};
+const createData = (name, phone) => {
+  return { name, phone };
 }
 
 const rows = [
@@ -23,13 +24,17 @@ const rows = [
   createData('Ann Onymous', '(987)654-3210')
 ];
 
-export default function ContactList () {
+const ContactList = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
+  const handleClick = () => {
+  
+  }
 
   return (
     <>
@@ -71,9 +76,9 @@ export default function ContactList () {
         </Table>
       </TableContainer>
     </Paper>
-            <Fab component='button' size="small" sx={{ mt: 3, position: 'relative', left: '50%' }} color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
+    <AddContact />
     </>
   );
 }
+
+export default ContactList

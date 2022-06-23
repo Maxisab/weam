@@ -1,5 +1,4 @@
 // REACT
-import { NavLink } from 'react-router-dom'
 import AuthErrorMessage from '../../components/AuthErrorMessage'
 import BackButton from '../../components/BackButton'
 import AlreadyRegistered from '../../components/AlreadyRegistered'
@@ -39,15 +38,6 @@ const validationSchema = yup.object({
 
 const Signup = () => {
   const { error, signup } = useSignup()
-
-  const loginText = {
-    textAlign: 'left'
-  }
-
-  const linkStyle = {
-    marginLeft: '5px',
-    textDecoration: 'none'
-  }
 
   const formik = useFormik({
     initialValues: {
